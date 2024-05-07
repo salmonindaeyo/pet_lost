@@ -1,0 +1,28 @@
+FROM node:20-alpine AS base
+
+FROM base AS deps
+
+RUN apk add --no-cache libc6-compat
+ 
+WORKDIR /app
+
+COPY package*.json ./
+COPY .npmrc ./
+
+RUN npm install yarn
+
+COPY . ./
+
+RUN yarn install
+
+FROM base AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV production
+
+COPY --from=deps /app/ ./
+
+EXPOSE 3000
+
+CMD npm start

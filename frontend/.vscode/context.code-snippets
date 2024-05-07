@@ -1,0 +1,24 @@
+{
+  "Print to console": {
+    "prefix": "innocontext",
+    "body": [
+      "import {createContext} from 'react'",
+      "import { makeAutoObservable } from 'mobx'",
+      "",
+      "class ${TM_FILENAME_BASE/[^0-9^a-z]//gi}{",
+      "//-------------------",
+      "// CONSTUCTOR",
+      "//-------------------",
+      "constructor(){",
+      "makeAutoObservable(this)",
+      "}",
+      "",
+      "//-------------------",
+      "// ACTION",
+      "//-------------------",
+      "}",
+      "export const ${TM_FILENAME_BASE/[^0-9^a-z]//gi}$1 = createContext(new ${TM_FILENAME_BASE/[^0-9^a-z]//gi}())"
+    ],
+    "description": "Innovasive React Context snippet"
+  }
+}

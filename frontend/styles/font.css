@@ -1,0 +1,14 @@
+
+@font-face {
+    font-family: 'Kanit';
+    font-weight: 500;
+    src: url('../public/fonts/Kanit-Medium.ttf');
+}
+
+@font-face {
+     font-family: 'Kanit';
+     font-weight: 300;
+     src: url('../public/fonts/Kanit-Light.ttf');
+ }
+  
+ 
