@@ -7,7 +7,7 @@ enableStaticRendering(typeof window === 'undefined')
 
 interface ModalContentType {
   title: string
-  content?: string | React.ReactNode
+  content?: any
 }
 
 interface ActionButtonType {
@@ -71,7 +71,6 @@ export class Modal {
                 </div>
               </div>
               <div className="flex justify-end space-x-3">
-              
                 {textButton?.confirm && (
                   <button onClick={(e) => confirm && confirm()} title={textButton?.confirm} className="w-[106px]" data-cy="modal_confirm_button">
                     OK

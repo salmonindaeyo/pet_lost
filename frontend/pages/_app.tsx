@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
         <div>
           <Modal />
           <div className="flex flex-col ">
-            {currentPath !== '/login' && currentPath !== 'register' && <NavBar />}
+            {currentPath !== '/login' && currentPath !== '/register' && <NavBar />}
             <Component {...pageProps} />
           </div>
         </div>

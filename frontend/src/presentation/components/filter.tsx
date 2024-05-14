@@ -9,7 +9,7 @@ export const Filter = ({ title }) => {
     <Observer>
       {() => (
         <div className="w-full h-[70px] flex items-center px-4 bg-[#3A2950]">
-          <div className="text-white text-[20px]">{title}</div>
+          <div className="text-white text-[20px]">{title === 'LOST_PET' ? 'สัตว์เลี้ยงหาย' : 'ตามหาเจ้าของ'}</div>
         </div>
       )}
     </Observer>

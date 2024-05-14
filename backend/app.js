@@ -4,9 +4,11 @@ const { v4: uuidv4 } = require("uuid");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const verifyToken = require("./middleware/auth");
-const CourseRoutes = require("./routes/Course");
-const ManageRoutes = require("./routes/Manage");
 const UserRoutes = require("./routes/User");
+const ProvinceRoutes = require("./routes/Province");
+const PetRoutes = require("./routes/Pet");
+const InformRoutes = require("./routes/Inform");
+
 const cors = require("cors");
 const { initMySQL } = require("./configs/db"); // import db module
 
@@ -21,11 +23,16 @@ app.use(
     preflightContinue: true,
   })
 );
+app.use(express.json());
+
 app.options("*", cors());
 //route
-app.use("/api/course", verifyToken, CourseRoutes);
-app.use("/api/manage", verifyToken, ManageRoutes);
+// app.use("/api/course", verifyToken, CourseRoutes);
+// app.use("/api/manage", verifyToken, ManageRoutes);
 app.use("/api/user", UserRoutes);
+app.use("/api/province", ProvinceRoutes);
+app.use("/api/pet", PetRoutes);
+app.use("/api/inform", InformRoutes);
 
 app.listen(port, async () => {
   await initMySQL();

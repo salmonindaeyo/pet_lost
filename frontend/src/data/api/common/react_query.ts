@@ -11,11 +11,12 @@ export const useDefaultError = () => {
   const router = useRouter()
 
   return (error: AxiosError<{ message?: string }>) => {
-    const errorMassage = error.response?.data?.message || error.message
+    const errorMassage = error.response?.data?.message || error.response?.data || error.message 
+    console.log(errorMassage)
     modalStore.openModal({
       content: {
         title: 'Error',
-        content: error.response?.data?.message || error.message,
+        content: errorMassage, 
       },
       actionButton: {
         confirm: () => modalStore.closeModal(),

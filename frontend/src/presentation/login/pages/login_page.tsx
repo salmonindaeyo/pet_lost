@@ -18,7 +18,7 @@ export const LoginPage = () => {
   async function Login() {
     if (userDetailData.username.length > 0 && userDetailData.password.length > 0) {
       try {
-        const resp = await loginServ.mutateAsync({ userDetailData })
+        const resp = await loginServ.mutateAsync(userDetailData)
         localStorage.setItem('userpetalert', JSON.stringify(resp.data))
         router.push('/')
       } catch (err) {

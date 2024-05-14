@@ -10,23 +10,21 @@ import { InputText } from 'primereact/inputtext'
 export const RegisterPage = () => {
   const router = useRouter()
 
-  const [userDetailData, setUserDetailData] = useState({
+  let userDetail = {
     username: '',
     password: '',
-  })
+  }
 
   const loginServ = useLogin()
   const registerServ = useRegister()
 
   async function Login() {
-    if (userDetailData.username.length > 0 && userDetailData.password.length > 0) {
-      try {
-        const resp = await loginServ.mutateAsync({ userDetailData })
-        localStorage.setItem('userpetalert', JSON.stringify(resp.data))
-        router.push('/')
-      } catch (err) {
-        console.log(err)
-      }
+    try {
+      const resp = await loginServ.mutateAsync(userDetail)
+      localStorage.setItem('userpetalert', JSON.stringify(resp.data))
+      router.push('/')
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -42,9 +40,11 @@ export const RegisterPage = () => {
     const validationErrors = validate(userDetailRegisData)
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const resp = await registerServ.mutateAsync({ userDetailRegisData })
+        const resp = await registerServ.mutateAsync(userDetailRegisData)
+        // setUserDetailData({ username: userDetailRegisData.username, password: userDetailRegisData.password })
+        userDetail.username = userDetailRegisData.username
+        userDetail.password = userDetailRegisData.password
         Login()
-        setUserDetailData({ username: userDetailRegisData.username, password: userDetailRegisData.password })
       } catch (err) {
         console.log(err)
       }
